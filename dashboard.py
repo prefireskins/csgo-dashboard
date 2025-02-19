@@ -15,10 +15,7 @@ from google.oauth2.service_account import Credentials
 # Lendo credenciais dos Secrets do Streamlit
 secrets_dict = st.secrets["gcp_service_account"]
 CREDENTIALS = Credentials.from_service_account_info(json.loads(json.dumps(secrets_dict)))
-
-)
-
-
+                                                    
 # 📌 Conectar ao Google Sheets
 gc = gspread.authorize(CREDENTIALS)
 SHEET_ID = "1HO2lFyTNKFIm1jH6a3YA-Cus4wHY21TKrCuHdI_6DBw"
