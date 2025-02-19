@@ -8,9 +8,14 @@ import datetime
 st.set_page_config(page_title="CSGOEmpire Dashboard", layout="wide")
 
 # 📌 Configurar credenciais do Google Sheets (usando caminho absoluto)
-CREDENTIALS = Credentials.from_service_account_file(
-    "/Users/nathanvieira/csgo_dashboard/crucial-sphinx-334409-67f05bd43a68.json",
-    scopes=["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
+import json
+import streamlit as st
+from google.oauth2.service_account import Credentials
+
+# Lendo credenciais dos Secrets do Streamlit
+secrets_dict = st.secrets["gcp_service_account"]
+CREDENTIALS = Credentials.from_service_account_info(json.loads(json.dumps(secrets_dict)))
+
 )
 
 
